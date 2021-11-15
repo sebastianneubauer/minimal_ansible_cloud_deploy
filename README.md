@@ -1,4 +1,4 @@
-```
+
 This is a dummy minimal structure for using ansible to deploy cloud 
 applications, e.g. hosted on kubernetes or any other PaaS.
 
@@ -9,9 +9,12 @@ Just think about every occurence of "host" is just something like "target", e.g.
 
 A minimal structure might look like this:
 
+```
 ├── dummy_deploy.yml
 ├── group_vars
 │   ├── all.yml
+│   ├── my_app
+│   │   └── common_configurations.yml
 │   ├── my_app_dev
 │   │   └── configs.yml
 │   └── my_app_prod
