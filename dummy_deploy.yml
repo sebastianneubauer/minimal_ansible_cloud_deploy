@@ -5,4 +5,4 @@
   tasks:
     - name: Deploy to k8s
       ansible.builtin.debug:
-        msg: Deploy {{app_name}} to {{k8s_api}}
+        msg: Deploy {{app_name}} with {{app_configuration}} to {{k8s_api}}
