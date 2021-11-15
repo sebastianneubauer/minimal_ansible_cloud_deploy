@@ -1,0 +1,6 @@
+---
+
+ansible_become: False
+ansible_connection: "local"
+ansible_gather_facts: False
+ansible_python_interpreter: "/usr/bin/env python"

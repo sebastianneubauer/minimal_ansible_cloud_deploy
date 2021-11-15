@@ -1,0 +1,6 @@
+my_app:
+    children:
+        my_app_dev:
+            hosts:
+                kubernetes_live
+
