@@ -45,3 +45,38 @@ my_app:
             hosts:
                 kubernetes_experimental
 ```
+
+The playbook is really just a stub here, doing nothing then showing how configurations can be organized for different
+deploys:
+
+```
+- name: my app deploy
+  hosts: my_app
+  tasks:
+    - name: Deploy to k8s
+      ansible.builtin.debug:
+        msg: Deploy {{app_name}} with {{app_configuration}} to {{k8s_api}}
+```
+
+All the different deploys then can be executed with this command:
+
+```
+ansible-playbook -i my_app_experimental dummy_deploy.yml
+...
+PLAY [my app deploy] ***********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [kubernetes_experimental]
+
+TASK [Deploy to k8s] ***********************************************************
+ok: [kubernetes_experimental] => {
+    "changed": false,
+    "msg": "Deploy MyApp with myapp_prod to http://experimentalk8s.com"
+}
+
+PLAY RECAP *********************************************************************
+kubernetes_experimental    : ok=2    changed=0    unreachable=0    failed=0    s
+```
+
+Take note of the `all.yml` where all the boilerplate is absorbed to tell ansible not to use a remote ssh connection. 
+Most likely the the deploy just just yaml over http requests.
